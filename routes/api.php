@@ -21,3 +21,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resources([
     'genres' => GenreController::class,
 ]);
+
+Route::resources([
+    'actors' => ActorController::class,
+]);
+
+Route::resources([
+    'movies' => MovieController::class,
+]);
