@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Traits\HasFetchAllRenderCapabilities;
 use App\Http\Requests\GenreRequest;
 use App\Models\Genre;
+use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+
+//use App\Article;
+//use App\Comment;
+use Illuminate\Support\Facades\Validator;
 
 class GenreController extends Controller
 {
@@ -50,6 +55,23 @@ class GenreController extends Controller
     public function show(Genre $genre)
     {
         return new \App\Http\Resources\Genre($genre);
+    }
+
+    /**
+     * Show the resource
+     *
+     * @param Genre $genre
+     * @return \App\Http\Resources\Genre
+     */
+    public function show_movies(Genre $genre) {
+
+        $movies = $genre->movies;
+        if (count($movies) > 0) {
+            return response()->json(['message' => 'Success', 'data' => $movies], 200);
+            //return new \App\Http\Resources\Genre($genre);
+        } 
+        return response()->json(['message' => 'No Comment Found', 'data' => null], 200);
+        //return new \App\Http\Resources\Genre($genre);
     }
 
     /**

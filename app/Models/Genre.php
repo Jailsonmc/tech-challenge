@@ -16,4 +16,9 @@ class Genre extends Model
     protected $keyType = 'string';
 
     protected $fillable = ['name'];
+
+    public function movies(){
+        return $this->hasMany(Movie::class, 'genre', 'name');
+    }
+
 }

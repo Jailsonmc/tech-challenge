@@ -21,5 +21,15 @@ class Movie extends Model
 	    'runtime',
 	    'released_at',
 	    'cost',
+        'genre',
     ];
+
+    public function genre(){
+        return $this->belongsTo(Genre::class);
+    }
+
+    public function actorRoles(){
+        return $this->hasMany(ActorRole::class, 'actor_id', 'id');
+    }
+
 }

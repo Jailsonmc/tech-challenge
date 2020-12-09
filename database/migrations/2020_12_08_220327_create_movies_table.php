@@ -21,6 +21,8 @@ class CreateMoviesTable extends Migration
             $table->integer('runtime');
             $table->string('released_at');
             $table->integer('cost');
+            $table->string('genre');
+            $table->foreign('genre')->references('name')->on('genres');
             $table->timestamps();
         });
     }
